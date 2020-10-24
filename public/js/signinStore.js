@@ -8,7 +8,11 @@ $(function() {
             password: $("#password").val().toLowerCase(),
         }, function (data, status) {
             window.localStorage.setItem("token", data.token);
-            window.location.href = "/homeCompanies.html";
+            $(".card").slideUp();
+                setTimeout(function(){
+                    window.location.href = "/homeCompanies.html";
+                }, 1000);
+//            window.location.href = "/homeCompanies.html";
         });
 
     });
