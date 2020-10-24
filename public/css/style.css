@@ -24,6 +24,12 @@ h1 {
     margin-top: 2rem;
 }
 
+#box{
+    padding-right: 5rem;
+    padding-left: 1rem;
+    
+}
+
 @media (min-width: 992px){
     .search-sec{
         position: relative;
