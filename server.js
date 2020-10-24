@@ -12,6 +12,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use("/api/test", require("./api/test"));
 router.use("/api", require("./api/user"));
+router.use("/api", require("./api/store"));
 // router.use("/api", require("./api/users"));
 
 app.use(router);
