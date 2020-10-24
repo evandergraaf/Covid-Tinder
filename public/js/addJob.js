@@ -17,4 +17,7 @@ $(function() {
             window.location.href = "/homeCompanies.html";
         });
     });
+    $("#cancelBtn").click(function(){
+        window.location.href = "/homeCompanies.html";
+    })
 });

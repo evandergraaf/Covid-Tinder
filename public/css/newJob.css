@@ -12,5 +12,17 @@ body{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .input-group-text{
-    width: 150px;
+    width: 30%;
+}
+.text{
+    width: 70%;
+}
+
+#cancelBtn{
+    background: red;
+    color: white;
+}
+
+#saveBtn:hover, #cancelBtn:hover{
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
