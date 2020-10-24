@@ -13,11 +13,10 @@ $(function() {
                 age: $("#age").val(),
             }, function (data, status) {
                 console.log(data);
-                console.log('test');
             });
         } else{
             alert("Passwords don't match");
         }
-
+        window.location.href = "/loginUser.html";
     });
 })
