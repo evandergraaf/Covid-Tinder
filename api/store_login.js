@@ -36,5 +36,27 @@ router.post("/store/login", function(req, res) {
     });
 });
 
+router.get("/store/auth", function(req, res) {
+
+    // Check if the X-Auth header is set
+    if (!req.headers["x-auth"]) {
+       return res.status(401).json({error: "Missing X-Auth header"});
+    }
+    
+    // X-Auth should contain the token 
+    var token = req.headers["x-auth"];
+    var decoded = jwt.decode(token, secret);
+    let qry = "SELECT store_email FROM Store WHERE store_email = ?";
+ 
+    // Checks if store_email exists
+    SQL.query(qry, decoded.store_email, (err, rows) => {
+          
+       if (err) throw err;
+       
+       if (rows.length == 0) res.status(401).json({error: "INVALID JWT"});
+       
+       else res.json(rows[0].store_email);  
+    });
+});
 
 module.exports = router;
