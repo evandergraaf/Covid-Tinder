@@ -31,8 +31,21 @@ router.post("/job/create", function(req, res){
             res.status(200).send('done');
         }
     })
+})
+
+router.get("/job/list", function(req, res){
+    console.log('job List');
+    SQL.query("SELECT * FROM Job", function(err, result){
+        console.log(result);
+        if (err){
+            res.status(401).send('error');
+        }else {
+        res.status(200).send(result);
+        }
+    })
 
 })
+
 
 
 module.exports = router;
