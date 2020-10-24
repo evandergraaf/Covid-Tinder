@@ -20,6 +20,9 @@ logIn.html
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/signinStore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -30,13 +33,13 @@ logIn.html
                     <h3>Log In Companies</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="loginStoreForm">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <label for="uid"></label>
-                            <input class="form-control" type="email" name="uid" id="username" placeholder="Email Address">
+                            <input class="form-control" type="email" name="uid" id="email" placeholder="Email Address">
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
