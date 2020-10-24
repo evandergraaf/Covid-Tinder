@@ -17,7 +17,7 @@ router.post("/user/create", function(req, res){
         if (err) throw err;
 
         //Making sure there isn't a user with that email already
-        if (rows > 0){
+        if (rows.length > 0){
             res.status(409).json({error: "Email already being used."});
         }
 

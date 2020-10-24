@@ -12,10 +12,11 @@ $(function() {
                 phone: $("#tlf").val(),
             }, function (data, status) {
                 console.log(data);
+                // window.location.href = "/loginCompany.html";
             });
         } else{
             alert("Passwords don't match");
         }
-        window.location.href = "/loginCompany.html";
+
     });
 })
