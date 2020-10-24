@@ -11,8 +11,8 @@ $(function() {
             phone:$("#tlf").val(),
             age: $("#age").val(),
         }, function(data, status) {
-        console.log(test);
-        console.log('test');
+            console.log(data);
+            console.log('test');
     });
 
     });
