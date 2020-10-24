@@ -37,7 +37,6 @@ router.post("/user/login", function(req, res) {
  });
 
  router.get("/user/auth", function(req, res) {
-
    // Check if the X-Auth header is set
    if (!req.headers["x-auth"]) {
       return res.status(401).json({error: "Missing X-Auth header"});
@@ -45,9 +44,7 @@ router.post("/user/login", function(req, res) {
    
    // X-Auth should contain the token 
    var token = req.headers["x-auth"];
-   console.log(token);
    var decoded = jwt.decode(token, secret);
-   console.log(decoded);
      
    let qry = "SELECT user_email FROM User WHERE user_email = ?";
 
@@ -55,7 +52,7 @@ router.post("/user/login", function(req, res) {
    SQL.query(qry, decoded.user_email, (err, rows) => {
          
       if (err) throw err;
-      
+      console.log(decoded);
       if (rows.length == 0) res.status(401).json({error: "INVALID JWT"});
       
       else res.json(rows[0].user_email);  

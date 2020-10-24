@@ -14,6 +14,7 @@ router.use("/api/test", require("./api/test"));
 router.use("/api", require("./api/user"));
 router.use("/api", require("./api/login"));
 router.use("/api", require("./api/store_login"));
+router.use("/api", require("./api/store"));
 // router.use("/api", require("./api/users"));
 
 app.use(router);
