@@ -8,7 +8,7 @@ router.use(bodyParser.json());
 
 secret = "scoobydoobydoowhereareyou?"
 //Makes a new user
-router.post("/user", function(req, res){
+router.post("/user/create", function(req, res){
     console.log("Making a new user!");
 
     //why select these values again?
@@ -27,11 +27,10 @@ router.post("/user", function(req, res){
             bcrypt.hash(req.body.password, null, null, function(err, hash){
 
                 var newUser = {
-                    user_id: req.body.user_id,
-                    user_email: req.body.email,
+                    user_email: req.body.user_email,
                     password: hash,
                     full_name: req.body.full_name,
-                    location: 0,
+                    set_location: 0,
                     phone: req.body.phone,
                     age: req.body.age
                 };
@@ -43,8 +42,7 @@ router.post("/user", function(req, res){
                     }
                     else{
                         console.log("User saved.");
-                        var token = jwt.encode({uid: newUser.uid}, secret);
-                        res.json({token: token});
+                        res.status(200).send('done');
                     }
                 } )
             })
