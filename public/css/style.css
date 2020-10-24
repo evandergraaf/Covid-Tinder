@@ -15,8 +15,12 @@ h3 {
     padding: 5rem;
 }
 
+.col{
+    padding: 1rem;
+}
+
 .grid{
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 @media (min-width: 992px){
