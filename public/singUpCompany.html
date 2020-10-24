@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>New Comapny Sing Up</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,48 +23,54 @@
     <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>New Job</h3>
+                    <h3>New Company Sing Up</h3>
                 </div>
                 <div class="card-body">
                     <form>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="jobTitle">Job Title</label>
+                                    <label for="storeName">Store Name</label>
                                 </span>
-                                <input class="text" type="jobName" name="jobTitle" id="jobName" placeholder="Job Title">
+                                <input class="text" type="text" name="storeName" id="storeName" placeholder="Store Name">
                             </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="jobTitle">Daily Hours</label>
+                                    <label for="jobTitle">Managers Name</label>
                                 </span>
-                                <input class="text" type="dayHours" name="dayHours" id="dayHours" placeholder="Daily Hours">
+                                <input class="text" type="text" name="manager" id="manager" placeholder="Last, First">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="jobTitle">Salary</label>
+                                    <label for="location">Store Location</label>
                                 </span>
-                                <input class="text" type="salary" name="salary" id="salary" placeholder="Salary">
+                                <input class="text" type="text" name="location" id="location" placeholder="Street, Number, City, State, County">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="timeFrame">Time Frame</label>
+                                    <label for="email">Email</label>
                                 </span>
-                                <input class="text" type="timeFrame" name="timeFrame" id="timeFrame" placeholder="Time Frame">
+                                <input class="text" type="email" name="email" id="email" placeholder="example@example.ex">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="preReq">Pre-requisites</label>
+                                    <label for="valEmail">Repeat Email</label>
                                 </span>
-                                <textarea class="form-control" id="preReq" rows="2"></textarea>
+                                <input class="text" type="email" name="valEmail" id="valEmail" placeholder="example@example.ex">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="description">Description</label>
+                                    <label for="password">Password</label>
                                 </span>
-                                <textarea class="form-control" id=" description " rows="5"></textarea>
+                                <input class="text" type="password" name="password" id="password" placeholder="example567_?">
+                        </div>
+                        <div class="input-group form-group">
+                                <span class="input-group-text">                   
+                                    <label for="valPass">Repeat Password</label>
+                                </span>
+                                <input class="text" type="password" name="valPass" id="valPass" placeholder="example567_?">
                         </div>
                         <div class="form-group">
-                            <input class="btn mt-3" type="submit" id="saveBtn" value="Save">
+                            <input class="btn mt-3" type="submit" id="singUpBtn" value="Sing In">
                         </div>
                         <span id="errorMsg" style="color: red; font-size: 25px"></span>
                     </form>
