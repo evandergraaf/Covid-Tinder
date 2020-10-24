@@ -1,5 +1,6 @@
-.search-sec{
-    padding: 4rem;
+
+#search{
+    margin: 10rem;
 }
 
 @media (min-width: 992px){
