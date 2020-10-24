@@ -7,11 +7,11 @@ router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
 //Makes a new user
-router.post("/user/create", function(req, res){
-    console.log("Making a new user!");
+router.post("/store/create", function(req, res){
+    console.log("Making a new store!");
 
     //why select these values again?
-    let qry = "SELECT user_email, password, full_name FROM User WHERE user_email = ?";
+    let qry = "SELECT store_id FROM Store WHERE store_email = ?";
 
     SQL.query(qry, [req.body.uid], (err, rows) =>{
         if (err) throw err;
@@ -25,22 +25,21 @@ router.post("/user/create", function(req, res){
             //Create a hash for the submitted password
             bcrypt.hash(req.body.password, null, null, function(err, hash){
 
-                var newUser = {
-                    user_email: req.body.user_email,
+                var newStore = {
+                    store_email: req.body.store_email,
                     password: hash,
-                    full_name: req.body.full_name,
-                    set_location: 0,
+                    company: req.body.company,
+                    location: 0,
                     phone: req.body.phone,
-                    age: req.body.age
                 };
             
-                SQL.query("INSERT INTO User SET ?", newUser, function(err, result){
+                SQL.query("INSERT INTO Store SET ?", newStore, function(err, result){
                     if (err){
-                        console.log("Trouble inserting user.");
+                        console.log("Trouble inserting store.");
                         res.status(400).send(err);
                     }
                     else{
-                        console.log("User saved.");
+                        console.log("Store saved.");
                         res.status(200).send('done');
                     }
                 } )
