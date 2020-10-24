@@ -28,7 +28,7 @@ router.post("/store/login", function(req, res) {
                     //Optional personal information to return
                     //let commaPos = rows[0].full_name.indexOf(",");
                     //let firstName = rows[0].full_name.substring(commaPos+1);
-                    let token = jwt.encode({username:rows[0].uid}, secret);
+                    let token = jwt.encode({store_email:rows[0].store_email}, secret);
                     res.json({token: token});
                 }
             });
