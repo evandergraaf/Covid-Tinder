@@ -32,7 +32,7 @@ $(function() {
              window.localStorage.setItem("token", data.token);
              window.localStorage.setItem("username", data.username);
              
-             window.location.href = "/home.html";
+             window.location.href = "/homeUsers.html";
          }
          //the user sumbitted something wrong -> user has not been authenticated
          else {
