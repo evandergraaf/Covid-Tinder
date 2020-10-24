@@ -48,15 +48,20 @@ router.post("/user/login", function(req, res) {
      
    let qry = "SELECT user_email FROM User WHERE user_email = ?";
 
-   // Checks if user_email exists
-   SQL.query(qry, decoded.user_email, (err, rows) => {
-         
-      if (err) throw err;
-      console.log(decoded);
-      if (rows.length == 0) res.status(401).json({error: "INVALID JWT"});
-      
-      else res.json(rows[0].user_email);  
-   });
+     if (decoded.user_email) {
+         // Checks if user_email exists
+         SQL.query(qry, decoded.user_email, (err, rows) => {
+
+             if (err) throw err;
+             console.log(decoded);
+             if (rows.length == 0) res.status(401).json({error: "INVALID JWT"});
+
+             else res.json(rows[0].user_email);
+         });
+     }
+     else{
+         res.status(400).send('error');
+     }
    
 });
 
