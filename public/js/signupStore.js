@@ -12,7 +12,7 @@ $(function() {
                 phone: $("#tlf").val(),
             }, function (data, status) {
                 console.log(data);
-                // window.location.href = "/loginCompany.html";
+                window.location.href = "/logInCompany.html";
             });
         } else{
             alert("Passwords don't match");
