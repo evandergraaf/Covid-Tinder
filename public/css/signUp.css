@@ -9,6 +9,7 @@ body{
     margin-bottom: auto;
     width: 80%;
     background-color: white !important;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .input-group-text{
     width: 150px;
