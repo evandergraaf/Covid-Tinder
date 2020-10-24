@@ -36,6 +36,7 @@ router.post("/store/create", function(req, res){
                 SQL.query("INSERT INTO Store SET ?", newStore, function(err, result){
                     if (err){
                         console.log("Trouble inserting store.");
+                        console.log(err);
                         res.status(400).send(err);
                     }
                     else{
