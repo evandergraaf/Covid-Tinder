@@ -1,6 +1,10 @@
 
 $(function() {
-
+//   console.log("loaded");
+//    $(".card").style.display = "none";
+//    setTimeout(function(){
+//                    $(".card").slideDown();
+//                }, 1000);
     $("#loginUserForm").submit((e) => {
         e.preventDefault();
             $.post("api/user/login", {
