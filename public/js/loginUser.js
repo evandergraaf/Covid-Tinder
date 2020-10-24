@@ -13,11 +13,7 @@ $(function() {
                 setTimeout(function(){
                     window.location.href = "/homeUsers.html";
                 }, 1000);
-//                $("#card").slideUp(500, function() {
-//                    $("#card").delay(5000).slideDown(500);
-//                }); 
                 window.localStorage.setItem("token", data.token);
-//                window.location.href = "/homeUsers.html";
             });
 
     });
