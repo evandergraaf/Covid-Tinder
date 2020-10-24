@@ -18,6 +18,6 @@ $(function() {
         } else{
             alert("Passwords don't match");
         }
-
+        window.location.href = "/loginUser.html";
     });
 })
