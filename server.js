@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 5000;
 
-app.use(express.static("public/html"));
+app.use(express.static("public"));
 
 var router = express.Router();
 router.use(bodyParser.json());
