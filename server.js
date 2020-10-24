@@ -10,7 +10,7 @@ app.use(express.static("public/html"));
 var router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
-// router.use("/api/images", require("./api/images"));
+router.use("/api/test", require("./api/test"));
 // router.use("/api", require("./api/users"));
 
 app.use(router);

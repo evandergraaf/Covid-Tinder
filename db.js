@@ -1,4 +1,4 @@
-import mysql from "mysql";
+var mysql = require("mysql");
 
 var conn = mysql.createConnection({
     host:   "nextjsdb.cdtdttbiopnt.us-east-2.rds.amazonaws.com",
