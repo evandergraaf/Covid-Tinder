@@ -1,11 +1,15 @@
-body{
-    background:red;
-}
+body{ 
+    background: linear-gradient(#B7F8D8, #50A7C2) !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+} 
 
 #title{
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
-
+h3 {
+    padding: 5rem;
+}
 #search{
     padding: 5rem;
 }
