@@ -1,7 +1,9 @@
-
-body { 
-    background: #63696E !important;
+body{ 
+    background: linear-gradient(#B7F8D8, #50A7C2) !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
 } 
+
 .card{
     height: 70%;
     margin-top: 100px;
