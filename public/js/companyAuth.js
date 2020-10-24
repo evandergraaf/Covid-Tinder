@@ -1,11 +1,10 @@
 
-
 $(function() {
     $.ajax({
-        url: "api/user/auth",
+        url: "api/store/auth",
         headers: {"x-auth": window.localStorage.getItem("token")},
         type: "GET",
         success: function() {console.log('auth') },
-        error: function() {window.location.href = "/logInUser.html";}
+        error: function() {window.location.href = "/logInCompany.html";}
     });
 })

@@ -14,13 +14,14 @@ router.post("/job/create", function(req, res){
         job_name: req.body.job_name,
         scheduled_hours: req.body.scheduled_hours,
         pay: req.body.pay,
-        certifications: req.body.certifications,
+        certifications_needed: req.body.certifications,
         start_date: req.body.start_date,
         end_date: req.body.end_date,
         description: req.body.description,
     }
+    console.log(newJob);
 
-    SQL.query("INSERT INTO User SET ?", newJob, function(err, result){
+    SQL.query("INSERT INTO Job SET ?", newJob, function(err, result){
         if (err){
             console.log('Trouble inserting Job');
             res.status(400).send(err);

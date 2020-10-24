@@ -13,10 +13,14 @@ $(function() {
                 age: $("#age").val(),
             }, function (data, status) {
                 console.log(data);
+                $(".card").slideUp();
+                setTimeout(function(){
+                    window.location.href = "/logInUser.html";
+                }, 1000);
             });
         } else{
             alert("Passwords don't match");
         }
-        window.location.href = "/logInUser.html";
+//        window.location.href = "/logInUser.html";
     });
 })

@@ -12,7 +12,10 @@ $(function() {
                 phone: $("#tlf").val(),
             }, function (data, status) {
                 console.log(data);
-                window.location.href = "/logInCompany.html";
+                $(".card").slideUp();
+                setTimeout(function(){
+                    window.location.href = "/logInCompany.html";
+                }, 1000);
             });
         } else{
             alert("Passwords don't match");
