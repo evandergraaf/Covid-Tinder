@@ -13,10 +13,10 @@ router.post("/user/create", function(req, res){
     //why select these values again?
     let qry = "SELECT user_email, password, full_name FROM User WHERE user_email = ?";
 
-    SQL.query(qry, [req.body.uid], (err, rows) =>{
+    SQL.query(qry, [req.body.user_email], (err, rows) =>{
         if (err) throw err;
 
-        //Making sure there isn't a user by that id
+        //Making sure there isn't a user with that email already
         if (rows > 0){
             res.status(409).json({error: "Email already being used."});
         }
