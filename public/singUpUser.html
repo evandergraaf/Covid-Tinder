@@ -15,7 +15,10 @@
     
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="/public/css/newJob.css">
+	<link rel="stylesheet" href="css/newJob.css">
+    <script src="js/signupUser.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -26,7 +29,7 @@
                     <h3>New Member Sing Up</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="signUpForm">
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="userPic">Picture</label>
@@ -37,7 +40,7 @@
                                 <span class="input-group-text">                   
                                     <label for="fullName">Full Name</label>
                                 </span>
-                                <input class="text" type="text" name="fullName" id="fullName" placeholder="Last, First">
+                                <input class="text" type="text" name="fullName" id="fullName" placeholder="Last, First" required="required">
                             </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
@@ -49,40 +52,34 @@
                                 <span class="input-group-text">                   
                                     <label for="tlf">Telephone</label>
                                 </span>
-                                <input class="text" type="text" name="tlf" id="tlf" placeholder="#tlf">
+                                <input class="text" type="text" name="tlf" id="tlf" placeholder="#tlf" required="required">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="age">Age</label>
                                 </span>
-                                <input class="text" type="text" name="age" id="age" placeholder="ex:20">
+                                <input class="text" type="text" name="age" id="age" placeholder="ex:20" required="required">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="email">Email</label>
                                 </span>
-                                <input class="text" type="email" name="email" id="email" placeholder="example@example.ex">
-                        </div>
-                        <div class="input-group form-group">
-                                <span class="input-group-text">                   
-                                    <label for="valEmail">Repeat Email</label>
-                                </span>
-                                <input class="text" type="email" name="valEmail" id="valEmail" placeholder="example@example.ex">
+                                <input class="text" type="email" name="email" id="email" placeholder="example@example.ex" required="required">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="password">Password</label>
                                 </span>
-                                <input class="text" type="password" name="password" id="password" placeholder="example567_?">
+                                <input class="text" type="password" name="password" id="password" placeholder="example567_?" required="required">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="valPass">Repeat Password</label>
                                 </span>
-                                <input class="text" type="password" name="valPass" id="valPass" placeholder="example567_?">
+                                <input class="text" type="password" name="valPass" id="valPass" placeholder="example567_?" required="required">
                         </div>
                         <div class="form-group">
-                            <input class="btn mt-3" type="submit" id="singUpBtn" value="Sing Up">
+                            <input class="btn mt-3" type="submit" id="signUpBtn" value="Sign Up">
                         </div>
                         <span id="errorMsg" style="color: red; font-size: 25px"></span>
                     </form>
