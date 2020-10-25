@@ -1,6 +1,11 @@
 
 
 $(function() {
+
+    $("#clearBtn").click(function(){
+        window.location.reload();
+        })
+
     $.ajax({
         url: "api/user/auth",
         headers: {"x-auth": window.localStorage.getItem("token")},
