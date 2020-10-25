@@ -50,17 +50,26 @@ $(function(){
                 
                 deleteBtn(idList);
             },
-            error: function() {window.location.href = "/logInUser.html";}
+            error: function() {console.log('error')}
         });
     };
     
+
+    function deleteBtn(){
+        $(".btn-outline-warning").click(function(){
+            console.log("button");
+        })
+    };
+
     function deleteBtn(idList){
         for (let i = 0; i < idList.length; i++){
             $("#" + idList[i]).click(function(){
                 console.log("button", idList[i]);
+                $.post('/api/job/delete',{job_id: idList[i].slice(-1)}, function(data){
+                    console.log(data);
+                })
             });
         }
-
     }
     
      htmlBody();
