@@ -73,6 +73,8 @@ h1 {
 
 .card{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 img{
     border-radius: 50%;
@@ -85,8 +87,6 @@ img{
     box-shadow: 0px 0px 999px 999px rgba(255, 255, 255, 0.5);
     z-index: 500;
   }
-    margin-bottom: 2rem;
-    margin-top: 2rem;
 }
 
 /*
