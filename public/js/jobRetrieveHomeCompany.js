@@ -58,7 +58,8 @@ $(function(){
     function deleteBtn(){
         $(".btn-outline-warning").click(function(){
             console.log("button");
-        });
+        })
+    };
 
     function deleteBtn(idList){
         for (let i = 0; i < idList.length; i++){
