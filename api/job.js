@@ -18,6 +18,7 @@ router.post("/job/create", function(req, res){
         start_date: req.body.start_date,
         end_date: req.body.end_date,
         description: req.body.description,
+        location: req.body.location,
     }
     console.log(newJob);
 
@@ -43,7 +44,6 @@ router.get("/job/list", function(req, res){
         res.status(200).send(result);
         }
     })
-
 })
 
 
