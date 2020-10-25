@@ -4,25 +4,7 @@ body{
     background-attachment: fixed !important;
     background-repeat: no-repeat !important;
 } 
-/*
-body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-}
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-*/
 .navbar{
    background-color: #1A4668 !important;
     color: #FFFFFF !important;
@@ -63,9 +45,16 @@ h1 {
         
     }
 }
-
+#keywords{
+    width: 200%;
+}
 #searchBtn{
-    width: 100%;
+    margin-left: 100%;
+    width: 70%;
+}
+#clearBtn{
+    margin-left: 70%;
+    width: 30%;
 }
 
 .card{
@@ -77,14 +66,6 @@ img{
     border-radius: 50%;
     width: 50px;
 }
-
-/*
-.card:hover{
-    transition: all 0.3s ease-out;
-    width: 20px;
-    color: rgba(255, 255, 255, 0.8);
-}
-*/
 .card:hover{
     transition: all 0.2s ease-out;
     box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
@@ -117,7 +98,6 @@ img{
 .slidecontainer {
     width: 100%; /* Width of the outside container */
 }
-
 
 /* Mouse-over effects */
 .slider:hover {
