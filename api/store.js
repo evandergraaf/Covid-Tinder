@@ -29,7 +29,7 @@ router.post("/store/create", function(req, res){
                     store_email: req.body.store_email,
                     password: hash,
                     company: req.body.company,
-                    location: 0,
+                    location: req.body.location,
                     phone: req.body.phone,
                 };
             
@@ -48,5 +48,15 @@ router.post("/store/create", function(req, res){
     })
 })
 
+router.get("/store/list", function(req, res){
+    SQL.query("SELECT * FROM Store", function(err, result){
+        if (err){
+            res.status(401).send('error');
+        }else {
+        res.status(200).send(result);
+        }
+    })
+
+});
 
 module.exports = router;
