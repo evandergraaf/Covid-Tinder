@@ -139,10 +139,13 @@ $(function(){
             headers: {"x-auth": window.localStorage.getItem("token")},
             success: function(data) {
                 console.log(data);
-                var html="";
+                var html="<div class='row'>";
+                
                 for (var j = 0; j < data.length; j++) {
-                    html += "<div><p>"+ data[j].job_name + "</p></div>"
+                    html += "<div class='col-sm-6'><div class='card'><div class='card-body'>";
+                    html += "<h5 class='card-title'>"+data[j].job_name+"</h5><p class='card-text'>" + data[j].description + "</p></div></div></div>"
                 }
+                html += "</div>";
                 $("#jobApply").html(html);
             }
         });
