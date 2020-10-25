@@ -88,6 +88,19 @@ router.post("/job/apply", function(req, res){
 
 });
 
+router.post("/job/delete", function(req, res){
+
+    SQL.query(`DELETE * FROM Job WHERE job_id = ${req.body.job_id}`, function(err, result){
+        console.log(result);
+        if (err){
+            res.status(401).send('error');
+        }else {
+            res.status(200).send(result);
+        }
+    })
+
+});
+
 router.post("/job/delete/applicant", function(req, res){
 
     SQL.query(`DELETE * FROM Job_has_Applicant WHERE user_email = ${req.body.user_email}`, function(err, result){
