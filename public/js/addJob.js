@@ -1,6 +1,5 @@
 $(function() {
 
-
     $("#addJobForm").submit((e)=>{
         e.preventDefault();
         $.ajax({
