@@ -19,7 +19,7 @@ $(function(){
                     }
                     
                     //button id for delete button in the cards
-                    var btnID = "delete" + data[j].job_id;
+                    var btnID = "delete-" + data[j].job_id;
                     idList.push(btnID);
                     
                     // create the card for the job
@@ -45,10 +45,14 @@ $(function(){
     //function to delete a job once is added
     function deleteBtn(idList){
         for (let i = 0; i < idList.length; i++){
-            $("#" + idList[i]).click(function(){
-                $.post('/api/job/delete',{job_id: idList[i].slice(-1)}, function(data){
-                    console.log(data);
+            $("#" + idList[i]).click(function(e){
+                e.preventDefault();
+                let temp = idList[i].split('-');
+                $.post('/api/job/delete', {job_id: temp[1]}, function (data) {
+                    window.location.reload();
                 })
+
+
             });
         }
     }
