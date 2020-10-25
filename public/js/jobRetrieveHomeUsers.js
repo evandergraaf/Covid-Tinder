@@ -1,6 +1,6 @@
 $(function(){
     
-    var DEBUG = true;
+    var DEBUG = false;
     var token = window.localStorage.getItem("token");
     var url = "api/job?u=" + token;
     console.log(url);
@@ -30,22 +30,25 @@ $(function(){
             }
             
             // every 4 entries we have to create a new row or close the row
-            
-            if((counter%4 == 1) || (counter ==0)){
+            console.log("counter: " + counter);
+            if((counter%4 == 0)){
+                console.log("inside first if");
                 html += "<div class='row'>\n";
             }
             
             counter = counter + 1;
             
             // create the card for the job
-            html += "<div class='col'>\n <div class='card' style='width: 15rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + data[j].job_name + "</h5>\n <p class='card-text'>" + data[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'>Duration: " + data[j].start_date + "-" + data[j].end_date + "</li>\n <li class='list-group-item'>Schedule: " + data[j].scheduled_hours + "</li>\n <li class='list-group-item'>Location: " + data[j].location + "</li>\n <li class='list-group-item'>Salary: " + data[j].pay + "$/h</li>\n <li class='list-group-item'>Certifications needed: " + data[j].certifications_needed + "</li>\n </ul>\n </div>\n </div>\n </div>\n ";
+            html += "<div class='col'>\n <div class='card' style='width: 15rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + data[j].job_name + "</h5>\n <p class='card-text'>" + data[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'>Duration: " + data[j].start_date + "-" + data[j].end_date + "</li>\n <li class='list-group-item'>Schedule: " + data[j].scheduled_hours + "</li>\n <li class='list-group-item'>Location: " + data[j].location + "</li>\n <li class='list-group-item'>Salary: " + data[j].pay + "$/h</li>\n <li class='list-group-item'>Certifications needed: " + data[j].certifications_needed + "</li>\n </ul>\n </div>\n </div>\n ";
             
             console.log(counter);
-            if((counter != 0) && (counter%4 == 0) || (counter+1 >= data.length)){
-                html += "</div>\n ";
+            if((counter != 0) && (counter%4 == 3) || (counter >= data.length)){
+                console.log("inside second if");
+                html += "</div>";
             }
         }
         
+        console.log("html to add: " + html);
         $("#jobCards").html(html);
         
     })
