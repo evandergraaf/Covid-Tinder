@@ -3,7 +3,32 @@ body{
     background-attachment: fixed !important;
     background-repeat: no-repeat !important;
 } 
+/*
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
 
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+*/
+.navbar{
+   background-color: #1A4668 !important;
+    color: #FFFFFF !important;
+}
+.navbar-brand, #navbarDropdown, #logOut, .nav-link{
+    color: #FFFFFF !important;
+}
 #title{
     margin-top: 3rem;
 }
@@ -22,12 +47,6 @@ h1 {
 
 .grid{
     margin-top: 2rem;
-}
-
-#box{
-    padding-right: 5rem;
-    padding-left: 1rem;
-    
 }
 
 @media (min-width: 992px){
