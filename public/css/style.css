@@ -97,6 +97,10 @@ img{
 	animation: gradient 5s ease infinite;
 }
 
+.card .list-group-item{
+    background: transparent !important;
+}
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
