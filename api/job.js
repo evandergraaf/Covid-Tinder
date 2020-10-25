@@ -159,12 +159,38 @@ router.post("/job/apply", function(req, res){
         user_email: decoded.user_email,
     }
 
+     console.log(jobApplicant);
+
     SQL.query("INSERT INTO Job_has_Applicant SET ?", jobApplicant, function(err, result){
         console.log(result);
         if (err){
             res.status(401).send('error');
         }else {
             res.status(200).send(result);
+        }
+    })
+
+});
+
+router.get("/job/user/apply/list", function(req, res){
+    // Check if the X-Auth header is set
+    if (!req.headers["x-auth"]) {
+        return res.status(401).json({error: "Missing X-Auth header"});
+    }
+
+    // X-Auth should contain the token
+    var token = req.headers["x-auth"];
+    var decoded = jwt.decode(token, secret);
+
+    SQL.query(`SELECT * FROM Job_has_Applicant WHERE user_email = ?`, decoded.user_email, function(err, result){
+        if (err){
+            res.status(401).send('error');
+        }else {
+                SQL.query('SELECT * FROM Job LEFT JOIN Job_has_Applicant ON Job.job_id = Job_has_Applicant.job_id WHERE Job_has_Applicant.user_email =  ?', decoded.user_email, function(err, result){
+                   console.log(result);
+                    res.status(200).send(result);
+
+                });
         }
     })
 

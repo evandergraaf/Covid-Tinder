@@ -6,6 +6,17 @@ const bcrypt = require("bcrypt-nodejs");
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
+//Lists all users in the database
+router.get("/user/list", function(req, res){
+    SQL.query("SELECT * FROM User", function(err, result){
+        if (err){
+            res.status(401).send('error');
+        }else {
+        res.status(200).send(result);
+        }
+    })
+});
+
 //Makes a new user
 router.post("/user/create", function(req, res){
     console.log("Making a new user!");
@@ -24,8 +35,7 @@ router.post("/user/create", function(req, res){
         else{
             //Create a hash for the submitted password
             bcrypt.hash(req.body.password, null, null, function(err, hash){
-                console.log("bcrypt is a butt!");
-
+                
                 var newUser = {
                     user_email: req.body.user_email,
                     password: hash,
