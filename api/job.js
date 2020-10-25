@@ -86,7 +86,7 @@ router.post("/job/create", function(req, res){
 
 
 //User searches for jobs in their preferred radius
-router.get("/job/searchInRadius", function(req, res){
+router.post("/job/searchInRadius", function(req, res){
     // Check if the X-Auth header is set
     if (!req.headers["x-auth"]) {
         return res.status(401).json({error: "Missing X-Auth header"});
@@ -140,8 +140,9 @@ router.get("/job/searchInRadius", function(req, res){
                         var jobLon = splitJobCoordinates[1];
                         distance = calculateDistance(userLat,userLon,jobLat,jobLon);
                         console.log("Distance between user and job:" + distance);
-                        
+                        console.log('user radius', userRadius);
                         if (distance <= userRadius){
+                            rows[i]['distance'] = distance;
                             potentialJobs += JSON.stringify(rows[i]) +",";
                         }
                         
@@ -150,6 +151,7 @@ router.get("/job/searchInRadius", function(req, res){
                     potentialJobs = potentialJobs.slice(0,-1);
                     potentialJobs += "]";
                     //TURNS INTO JSON OBJECT
+                    console.log(potentialJobs);
                     var potentialJobsJSON = JSON.parse(potentialJobs);
                     
                 }
