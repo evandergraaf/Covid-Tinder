@@ -32,6 +32,7 @@ router.post("/store/create", function(req, res){
                     location: req.body.location,
                     phone: req.body.phone,
                     address: req.body.address,
+                    manager_name: req.body.manager_name,
                 };
             
                 SQL.query("INSERT INTO Store SET ?", newStore, function(err, result){

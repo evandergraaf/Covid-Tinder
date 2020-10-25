@@ -15,6 +15,7 @@ $(function() {
                             company: $("#company").val(),
                             location: location,
                             address: $("#location").val(),
+                            manager_name: $("#manager").val(),
                             phone: $("#tlf").val(),
                         }, function (data, status) {
                             console.log(data);
