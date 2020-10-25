@@ -42,10 +42,6 @@ router.get("/job/list", function(req, res){
         res.status(200).send(result);
         }
     })
-<<<<<<< HEAD
-})
-=======
-
 });
 
 router.post("/job/apply", function(req, res){
@@ -86,7 +82,6 @@ router.post("/job/delete/applicant", function(req, res){
     })
 
 });
->>>>>>> 85ae872d4655a02f6d37fa181b201b5d2288e1ba
 
 
 
