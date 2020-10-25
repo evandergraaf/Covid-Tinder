@@ -96,6 +96,8 @@ router.get("/job/searchInRadius", function(req, res){
     var token = req.headers["x-auth"];
     var decoded = jwt.decode(token, secret);
 
+    var userRadius = req.body.radius;
+
     let qry = "SELECT * FROM User WHERE user_email = ?"
 
     SQL.query(qry, decoded.user_email, function(err, rows){
@@ -127,7 +129,8 @@ router.get("/job/searchInRadius", function(req, res){
                         var jobLon = splitJobCoordinates[1];
                         distance = calculateDistance(userLat,userLon,jobLat,jobLon);
                         console.log("Distance between user and job:" + distance);
-                        if (distance <= 1000){
+                        
+                        if (distance <= userRadius){
                             potentialJobs += JSON.stringify(rows[i]) +",";
                         }
                         

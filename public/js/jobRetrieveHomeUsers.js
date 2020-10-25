@@ -42,7 +42,7 @@ $(function(){
                 var btnID = "apply" + data[j].job_id;
                 idList.push(btnID);
                 // create the card for the job
-                html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + data[j].job_name + "</h5>\n <p class='card-text'>" + data[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + data[j].start_date + "-" + data[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + data[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + data[j].location + "</li>\n <li class='list-group-item'><b>Salary: </b>" + data[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + data[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID + " " + ">Apply</button>\n  </li>\n  </ul>\n </div>\n </div>\n ";
+                html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + data[j].job_name + "</h5>\n <p class='card-text'>" + data[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + data[j].start_date + "-" + data[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + data[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + data[j].address + "</li>\n <li class='list-group-item'><b>Salary: </b>" + data[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + data[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID + " " + ">Apply</button>\n  </li>\n  </ul>\n </div>\n </div>\n ";
 
                 console.log(counter);
                 if ((counter != 0) && (counter % 3 == 2) || (counter >= data.length + 1)) {
@@ -95,7 +95,7 @@ $(function(){
                 html += "<div class='row'>\n";
             }
             // create the card for the job
-            html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + jobs[j].job_name + "</h5>\n <p class='card-text'>" + jobs[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + jobs[j].start_date + "-" + jobs[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + jobs[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + jobs[j].location + "</li>\n <li class='list-group-item'><b>Salary: </b>" + jobs[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + jobs[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID + " " + ">Apply</button>\n  </li>\n  </ul>\n </div>\n </div>\n ";
+            html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + jobs[j].job_name + "</h5>\n <p class='card-text'>" + jobs[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + jobs[j].start_date + "-" + jobs[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + jobs[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + jobs[j].address + "</li>\n <li class='list-group-item'><b>Salary: </b>" + jobs[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + jobs[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID + " " + ">Apply</button>\n  </li>\n  </ul>\n </div>\n </div>\n ";
             
 //            console.log(counter);
             if((counter != 0) && (counter%3 == 2) || (counter >= data.length+1)){
@@ -148,4 +148,6 @@ $(function(){
                 $("#jobApply").html(html);
             }
         }); 
+    
+
 })
