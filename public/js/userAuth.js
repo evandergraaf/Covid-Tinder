@@ -20,7 +20,7 @@ $(function() {
         type: "GET",
         success: function(data) {
             $("#userName").html("Hi " + data[0].full_name + "!");
-            console.log(data[0]); }
+         }
     });
 
     var slider = document.getElementById("myRange");

@@ -18,7 +18,6 @@ $(function() {
                             phone: $("#tlf").val(),
                             age: $("#age").val(),
                         }, function (data, status) {
-                            console.log(data);
                             $(".card").slideUp();
                             setTimeout(function(){
                                  window.location.href = "/logInUser.html";
@@ -28,7 +27,5 @@ $(function() {
                         alert("Passwords don't match");
                     }
                 });
-
-//        window.location.href = "/logInUser.html";
     });
 })
