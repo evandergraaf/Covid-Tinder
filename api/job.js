@@ -8,6 +8,7 @@ router.use(bodyParser.json());
 
 //Makes a new user
 router.post("/job/create", function(req, res){
+    console.log("Making a new job!");
 
     var newJob = {
         job_name: req.body.job_name,
@@ -17,7 +18,9 @@ router.post("/job/create", function(req, res){
         start_date: req.body.start_date,
         end_date: req.body.end_date,
         description: req.body.description,
+        location: req.body.location,
     }
+    console.log(newJob);
 
     SQL.query("INSERT INTO Job SET ?", newJob, function(err, result){
         if (err){
@@ -39,7 +42,6 @@ router.get("/job/list", function(req, res){
         res.status(200).send(result);
         }
     })
-
 });
 
 router.post("/job/apply", function(req, res){
