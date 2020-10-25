@@ -91,5 +91,6 @@ transition: all 0.2s ease-out;
     top: -4px;
     border: 1px solid #cccccc;
     background-color: white;
+    cursor: pointer;
 }
 
