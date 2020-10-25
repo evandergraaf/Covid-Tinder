@@ -24,12 +24,13 @@ router.post("/user/create", function(req, res){
         else{
             //Create a hash for the submitted password
             bcrypt.hash(req.body.password, null, null, function(err, hash){
+                console.log("bcrypt is a butt!");
 
                 var newUser = {
                     user_email: req.body.user_email,
                     password: hash,
                     full_name: req.body.full_name,
-                    set_location: 0,
+                    set_location: req.body.set_location,
                     phone: req.body.phone,
                     age: req.body.age
                 };
