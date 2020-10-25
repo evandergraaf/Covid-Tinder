@@ -1,4 +1,10 @@
-
+// js/signupStore.js
+/** JS for creating a new company account
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*/
 $(function() {
 
     $("#signUpFormStore").submit((e) => {

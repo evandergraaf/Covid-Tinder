@@ -1,3 +1,10 @@
+// js/jobRetrieveHomeCompany.js
+/** JS for the Company home screen 
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*/
 $(function(){
 
     function htmlBody(){
