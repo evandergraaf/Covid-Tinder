@@ -45,17 +45,19 @@ h1 {
         
     }
 }
+
+
 #keywords{
-    width: 200%;
+    width: 100%;
 }
 #searchBtn{
-    margin-left: 100%;
-    width: 70%;
+    width: 100%;
 }
+
 #clearBtn{
-    margin-left: 70%;
-    width: 30%;
+    width: 100%;
 }
+
 
 .card{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
