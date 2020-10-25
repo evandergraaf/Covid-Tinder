@@ -14,6 +14,6 @@ $(function() {
         type: "GET",
         success: function(data) {
             $("#company").html("Hi " + data[0].company + "!");
-            console.log(data[0]); }
+            }
     });
 })
