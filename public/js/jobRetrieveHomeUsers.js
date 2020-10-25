@@ -14,7 +14,8 @@ $(function(){
             //for(var i=0; i< data.length; i++){
             //        console.log(data[i].job_name);
             //  }
-
+            
+            
             var counter = 0;
             var html = "";
             var idList = [];
@@ -131,8 +132,6 @@ $(function(){
     }
 
     htmlBody();
-
-
         $.ajax({
             url: "api/job/user/apply/list",
             type: "GET",
@@ -148,5 +147,5 @@ $(function(){
                 html += "</div>";
                 $("#jobApply").html(html);
             }
-        });
+        }); 
 })
