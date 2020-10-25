@@ -7,6 +7,8 @@ const jwt = require("jwt-simple");
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
+secret = "scoobydoobydoowhereareyou?";
+
 router.post("/user/login", function(req, res) {
 
     let qry = "SELECT user_email, password FROM User WHERE user_email = ?";
@@ -26,7 +28,7 @@ router.post("/user/login", function(req, res) {
                 //Optional personal information to return
                 //let commaPos = rows[0].full_name.indexOf(",");
                 //let firstName = rows[0].full_name.substring(commaPos+1);
-                let token = jwt.encode({username:rows[0].uid}, secret);
+                let token = jwt.encode({user_email:rows[0].user_email}, secret);
                 res.json({token: token});
              }
           });
@@ -34,5 +36,33 @@ router.post("/user/login", function(req, res) {
     });
  });
 
+ router.get("/user/auth", function(req, res) {
+   // Check if the X-Auth header is set
+   if (!req.headers["x-auth"]) {
+      return res.status(401).json({error: "Missing X-Auth header"});
+   }
+   
+   // X-Auth should contain the token 
+   var token = req.headers["x-auth"];
+   var decoded = jwt.decode(token, secret);
+     
+   let qry = "SELECT user_email FROM User WHERE user_email = ?";
+
+     if (decoded.user_email) {
+         // Checks if user_email exists
+         SQL.query(qry, decoded.user_email, (err, rows) => {
+
+             if (err) throw err;
+             console.log(decoded);
+             if (rows.length == 0) res.status(401).json({error: "INVALID JWT"});
+
+             else res.json(rows[0].user_email);
+         });
+     }
+     else{
+         res.status(400).send('error');
+     }
+   
+});
 
 module.exports = router;

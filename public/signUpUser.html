@@ -1,7 +1,16 @@
+<!--
+*html/signUpUser.html
+*HTML for creating a new user account
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>New Member Sing Up</title>
+    <title>New Member Sign Up</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +24,7 @@
     
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="css/newJob.css">
+	<link rel="stylesheet" href="css/signUp.css">
     <script src="js/signupUser.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
@@ -26,16 +35,10 @@
     <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>New Member Sing Up</h3>
+                    <h3>Create New Member Account</h3>
                 </div>
                 <div class="card-body">
                     <form id="signUpForm">
-                        <div class="input-group form-group">
-                                <span class="input-group-text">                   
-                                    <label for="userPic">Picture</label>
-                                </span>
-                                <input class="form-control-file" type="file" accept="image/*" name="photo" >
-                        </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="fullName">Full Name</label>
@@ -44,7 +47,7 @@
                             </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="location">Adress</label>
+                                    <label for="location">Address</label>
                                 </span>
                                 <input class="text" type="text" name="location" id="location" placeholder="Street, Number, City, State, County">
                         </div>
@@ -74,7 +77,7 @@
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="valPass">Repeat Password</label>
+                                    <label for="valPass">Confirm Password</label>
                                 </span>
                                 <input class="text" type="password" name="valPass" id="valPass" placeholder="example567_?" required="required">
                         </div>
@@ -83,6 +86,14 @@
                         </div>
                         <span id="errorMsg" style="color: red; font-size: 25px"></span>
                     </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Already have an account?&nbsp;&nbsp;<a href="logInUser.html">Log In</a>
+                    </div>
+                    <div class="d-flex justify-content-center links">
+                        Are you a business?&nbsp;&nbsp; <a href="logInCompany.html">Access to the business portal</a>
+                    </div>
                 </div>
             </div>
     </div>

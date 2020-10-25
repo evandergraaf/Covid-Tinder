@@ -1,3 +1,9 @@
+/** Styles for sign-up screens - css/signUp.css
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*/
 body{ 
     background: linear-gradient(#B7F8D8, #50A7C2) !important;
     background-attachment: fixed !important;
@@ -7,6 +13,13 @@ body{
     height: 70%;
     margin-top: 100px;
     margin-bottom: auto;
-    width: 70%;
+    width: 80%;
     background-color: white !important;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.input-group-text{
+    width: 30%;
+}
+.text{
+    width: 70%;
 }

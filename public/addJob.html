@@ -1,3 +1,11 @@
+<!--
+*html/addJob.html
+*HTML for creating a new Job Oppurtunity
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +24,12 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="css/newJob.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="js/companyAuth.js"></script>
+    <script src="js/addJob.js"></script>
+
+
+
 </head>
 <body>
 
@@ -26,46 +40,53 @@
                     <h3>Create a New Job Position</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="addJobForm">
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="jobTitle">Job Title</label>
                                 </span>
-                                <input class="text" type="jobName" name="jobTitle" id="jobName" placeholder="Job Title">
+                                <input class="text" type="jobName" name="jobTitle" id="job_name" placeholder="Job Title" required="required">
                             </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="jobTitle">Daily Hours</label>
                                 </span>
-                                <input class="text" type="dayHours" name="dayHours" id="dayHours" placeholder="Daily Hours">
+                                <input class="text" type="dayHours" name="dayHours" id="scheduled_hours" placeholder="Daily Hours" required="required">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="jobTitle">Salary</label>
                                 </span>
-                                <input class="text" type="salary" name="salary" id="salary" placeholder="Salary">
+                                <input class="text" type="salary" name="salary" id="pay" placeholder="Salary" required="required">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
-                                    <label for="timeFrame">Time Frame</label>
+                                    <label for="timeFrame">Start Date</label>
                                 </span>
-                                <input class="text" type="timeFrame" name="timeFrame" id="timeFrame" placeholder="Time Frame">
+                                <input class="text" type="date" name="start_date" id="start_date" placeholder="Time Frame" required="required">
+                        </div>
+                        <div class="input-group form-group">
+                                <span class="input-group-text">
+                                    <label for="timeFrame">End Date</label>
+                                </span>
+                            <input class="text" type="date" name="end_date" id="end_date" placeholder="Time Frame" required="required">
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="preReq">Pre-requisites</label>
                                 </span>
-                                <textarea class="form-control" id="preReq" rows="2"></textarea>
+                                <textarea class="form-control" id="certifications" rows="2" required="required"></textarea>
                         </div>
                         <div class="input-group form-group">
                                 <span class="input-group-text">                   
                                     <label for="description">Description</label>
                                 </span>
-                                <textarea class="form-control" id=" description " rows="5"></textarea>
+                                <textarea class="form-control" id="description" rows="5" required="required"></textarea>
                         </div>
                         <div class="form-group">
                             <input class="btn mt-3" type="submit" id="saveBtn" value="Save">
-                        </div>
+                            <input class="btn mt-3" type="button" id="cancelBtn" value="Cancel" id="cancelBtn">
+                        </div>                        
                         <span id="errorMsg" style="color: red; font-size: 25px"></span>
                     </form>
                 </div>

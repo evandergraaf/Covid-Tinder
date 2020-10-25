@@ -1,6 +1,11 @@
 <!--
-logIn.html
--->
+*html/logInCompany.html
+*HTML for logging into a company account 
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +25,9 @@ logIn.html
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/signinStore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -27,16 +35,16 @@ logIn.html
     <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>Log In</h3>
+                    <h3>Business Account Log In</h3>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="loginStoreForm">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <label for="uid"></label>
-                            <input class="form-control" type="email" name="uid" id="username" placeholder="Email Address">
+                            <input class="form-control" type="email" name="uid" id="email" placeholder="Email Address">
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
@@ -53,7 +61,10 @@ logIn.html
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        Don't have an account?<a href="signUpCompany.html">Sign Up</a>
+                        Need to create a new business account?&nbsp;&nbsp;<a href="signUpCompany.html">Sign Up</a>
+                    </div>
+                    <div class="d-flex justify-content-center links">
+                        Looking for a job?&nbsp;&nbsp; <a href="logInUser.html">Access to the member portal</a>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,9 @@
+/** Styles for login screens - css/login.css
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*/
 body{ 
     background: linear-gradient(#B7F8D8, #50A7C2) !important;
     background-attachment: fixed !important;
@@ -8,5 +14,7 @@ body{
     margin-top: 100px;
     margin-bottom: auto;
     width: 400px;
+    width: 500px;
     background-color: white !important;
+       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }

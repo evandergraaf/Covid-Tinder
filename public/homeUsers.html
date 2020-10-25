@@ -1,40 +1,56 @@
+<!--
+*html/homeUsers.html
+*HTML for home page from an user account
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*-->
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="js/homeUsers.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="js/userAuth.js"></script>
+        <script src="js/jobRetrieveHomeUsers.js"></script>
+        <script scr="js/orderByUserHome.js"></script>
     </head>  
 
 
         <!--Main Navigation Navigation Bar-->
         <header>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="#">User Home</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
 
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <a class="navbar-brand" id="userName" href="#"></a>
+              <div id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Order By
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                    <li>
+                    <img src="https://www.thatsockcomic.com/wp-content/uploads/2020/03/Untitled-1-300x249.png" alt="Avatar" class="avatar">&nbsp;&nbsp;
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logOut" href="logInUser.html">Log Out</a>
+                    </li>&nbsp;&nbsp;
+                <li>
+                   <div class="dropdown p-2">
+                      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        Order By
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" id="recent" href="#">Most Recent</a>
+                        <a class="dropdown-item" id="distance" href="#">Distance</a>
+                        <a class="dropdown-item" id="other" href="#">Other</a>
+                      </div>
                     </div>
+                </li> 
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Log In</a>
-                        </li>
-                    </ul>
-                </form>
-              </div>
-            </nav>
+            </div>
+        </nav>
     </header>
 <!--Main Navigation-->
     
@@ -43,149 +59,52 @@
         <div class="container" id="title">
             <div class="row pt-1 pb-1">
                 <div class="col-lg-12">
-                    <h4 class="text-center">Find covid jobs around you</h4>
-                    <h6 class="text-center">awesome responsive image slider with a search bar</h6>
+                    <h1 class="text-center">Find covid Jobs Near You</h1>
+                    <h6 class="text-center"></h6>
                 </div>
             </div>
         </div>
         <section class="search-sec" id="search">
             <div class="container" id="searchBox">
-                <form action="#" method="post" novalidate="novalidate">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <input type="text" class="form-control search-slt" placeholder="Key words">
+                                <div id="box" class="col-lg-8 col-md-8 col-sm-12 p-1">
+                                    <input type="text" class="form-control search-slt" placeholder="Key words" id="keywords">
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <input type="text" class="form-control search-slt" placeholder="Location">
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-1">
+                                    <button type="button" class="btn btn-warning" id="searchBtn">Search</button>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                        <option>Type of job
-                                        </option>
-                                        <option>From home</option>
-                                        <option>In person</option>
-                                    </select>
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-1">
+                                    <button type="button" class="btn btn-secondary" id="clearBtn">Clear</button>
                                 </div>
-                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                    <button type="button" class="btn btn-warning">Search</button>
+                            </div>
+                            <div class="row" style="margin-top: 16px">
+                                <h5 style="color: white">Range </h5>
+
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="20" value="20" class="slider" id="myRange">
                                 </div>
+                                <p style="color: white" id="demo"> </p><p style="color: white">  &nbsp;miles</p>
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
         </section>
         
 <!-- grid and cards section -->
-    <div class="container">
-      <div class="row grid">
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
+        <div>
+        <h2 style="text-align: center">Jobs Applied For</h2>
+        <div class="container" id="jobApply">
+            <!-- add jobs here through js -->
         </div>
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
         </div>
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-        </div>
-    </div>
-    <div class="row grid">
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-        </div>
-    </div>
+
+        <br>
+
+        <h2 style="text-align: center">Found Jobs</h2>
+    <div class="container" id="jobCards">
+        <!-- add jobs here through js -->
     </div>
     
     </body>
