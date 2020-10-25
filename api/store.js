@@ -2,6 +2,7 @@ const router = require("express").Router();
 const SQL = require("../db.js");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
+const jwt = require("jwt-simple");
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
@@ -72,7 +73,7 @@ router.get("/store/current", function(req, res){
     var token = req.headers["x-auth"];
     var decoded = jwt.decode(token, secret);
 
-    SQL.query("SELECT * FROM User WHERE store_email = ?", decoded.store_email, function(err, result){
+    SQL.query("SELECT * FROM Store WHERE store_email = ?", decoded.store_email, function(err, result){
         if (err){
             res.status(401).send('error');
         }else {
