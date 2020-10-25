@@ -8,7 +8,7 @@ $(function(){
     
     //get all job aviable in the data base
     $.get("api/job/list",(data)=>{
-        console.log("data:" + data);
+
         
         //for(var i=0; i< data.length; i++){
     //        console.log(data[i].job_name);
@@ -30,9 +30,9 @@ $(function(){
             }
             
             // every 4 entries we have to create a new row or close the row
-            console.log("counter: " + counter);
+//            console.log("counter: " + counter);
             if((counter%3 == 0)){
-                console.log("inside first if");
+//                console.log("inside first if");
                 html += "<div class='row'>\n";
             }
             
@@ -40,15 +40,15 @@ $(function(){
             // create the card for the job
             html += "<div class='col-sm'>\n <div class='card' style='width: 20rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + data[j].job_name + "</h5>\n <p class='card-text'>" + data[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + data[j].start_date + "-" + data[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + data[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + data[j].location + "</li>\n <li class='list-group-item'><b>Salary: </b>" + data[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + data[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning'>Apply</button>\n  </li>\n  </ul>\n </div>\n </div>\n ";
             
-            console.log(counter);
+//            console.log(counter);
             if((counter != 0) && (counter%3 == 2) || (counter >= data.length+1)){
-                console.log("inside second if");
+//                console.log("inside second if");
                 html += "</div>";
             }
             counter = counter + 1;
         }
         
-        console.log("html to add: " + html);
+//        console.log("html to add: " + html);
         $("#jobCards").html(html);
         
     })
