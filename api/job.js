@@ -63,6 +63,7 @@ router.post("/job/create", function(req, res){
                 end_date: req.body.end_date,
                 description: req.body.description,
                 location: rows[0].location,
+                address: rows[0].address,
                 store_email: rows[0].store_email
             }
             console.log(newJob);

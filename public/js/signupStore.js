@@ -14,6 +14,7 @@ $(function() {
                             password: $("#valPass").val().toLowerCase(),
                             company: $("#company").val(),
                             location: location,
+                            address: $("#location").val(),
                             phone: $("#tlf").val(),
                         }, function (data, status) {
                             console.log(data);
