@@ -21,7 +21,7 @@ $(function() {
                             console.log(data);
                             $(".card").slideUp();
                             setTimeout(function(){
-                                // window.location.href = "/logInUser.html";
+                                 window.location.href = "/logInUser.html";
                             }, 1000);
                         });
                     } else{
