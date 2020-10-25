@@ -1,5 +1,9 @@
-
-
+// js/userAuth.js
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*/
 $(function() {
 
     $("#clearBtn").click(function(){

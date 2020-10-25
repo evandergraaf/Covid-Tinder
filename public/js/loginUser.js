@@ -1,4 +1,10 @@
-
+// js/loginUser.js
+/** JS for the user login page
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*/
 $(function() {
 
     $("#loginUserForm").submit((e) => {

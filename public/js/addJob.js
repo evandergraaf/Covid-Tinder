@@ -1,3 +1,10 @@
+// js/addJob.js
+/** JS for creating a new job screen
+*Ean Vandergraaf, Laura Pareja,
+*Carter Williams, Seth Workman
+*KC Fed Code-A-Thon - Covid Project
+*10/25/2020
+*/
 $(function() {
 
     $("#addJobForm").submit((e)=>{
