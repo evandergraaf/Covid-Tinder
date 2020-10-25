@@ -3,9 +3,11 @@ const SQL = require("../db.js");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
 const jwt = require("jwt-simple");
+secret = "scoobydoobydoowhereareyou?";
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
+
 
 //Makes a new job
 router.post("/job/create", function(req, res){
@@ -108,6 +110,25 @@ router.get("/job/list", function(req, res){
         }
     })
 });
+
+router.get("/job/list/company", function(req, res){
+    if (!req.headers["x-auth"]) {
+        return res.status(401).json({error: "Missing X-Auth header"});
+    }
+
+    // X-Auth should contain the token
+    var token = req.headers["x-auth"];
+    var decoded = jwt.decode(token, secret);
+
+    SQL.query("SELECT * FROM Job WHERE store_email = ?", decoded.store_email, function(err, result){
+        if (err){
+            res.status(401).send('error');
+        }else {
+            console.log(result);
+            res.status(200).send(result);
+        }
+    })
+})
 
 
 
