@@ -113,3 +113,14 @@ img{
 		background-position: 0% 50%;
 	}
 }
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+
+/* Mouse-over effects */
+.slider:hover {
+    cursor: pointer;
+}
+
