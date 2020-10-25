@@ -142,7 +142,7 @@ router.post("/job/searchInRadius", function(req, res){
                         console.log("Distance between user and job:" + distance);
                         console.log('user radius', userRadius);
                         if (distance <= userRadius){
-                            rows[i]['distance'] = distance;
+                            rows[i]['distance'] = Math.round(distance);
                             potentialJobs += JSON.stringify(rows[i]) +",";
                         }
                         
