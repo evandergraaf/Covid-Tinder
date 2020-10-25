@@ -96,7 +96,18 @@ router.get("/job/searchInRadius", function(req, res){
     var token = req.headers["x-auth"];
     var decoded = jwt.decode(token, secret);
 
-    var userRadius = req.body.radius;
+    if (req.body.radius == ""){
+        var userRadius = 10;
+    }
+    else{
+        var userRadius = req.body.radius;
+    }
+
+    var keywordSearch = true;
+
+    if (req.body.keyword == ""){
+        keywordSearch = false;
+    }
 
     let qry = "SELECT * FROM User WHERE user_email = ?"
 
@@ -137,11 +148,42 @@ router.get("/job/searchInRadius", function(req, res){
                     }
                     //Gets rid of the extra comma and ends the string
                     potentialJobs = potentialJobs.slice(0,-1);
-                    potentialJobs += "]"
+                    potentialJobs += "]";
+                    //TURNS INTO JSON OBJECT
+                    var potentialJobsJSON = JSON.parse(potentialJobs);
+                    
                 }
-                console.log(potentialJobs);
                 
-                res.json(JSON.parse(potentialJobs));
+                if (keywordSearch == true){
+                    keywordPotentialJobs = "[";
+                    var temp = [];
+                    //NAME SEARCH
+                    for (i = 0; i < potentialJobsJSON.length; i++){
+                        var job_name = potentialJobsJSON[i].job_name.toLowerCase();
+                        if(job_name.includes(req.body.keyword)){
+                            temp.push(potentialJobsJSON[i])
+                            potentialJobsJSON[i]="";
+                        }
+                    }
+                    //DESCRIPTION AND CERTIFICATION SEARCH
+                    for (i = 0; i < potentialJobsJSON.length; i++){
+                        if(potentialJobsJSON[i] != ""){
+                            var desc = potentialJobsJSON[i].description.toLowerCase();
+                            var cert = potentialJobsJSON[i].certifications_needed.toLowerCase();
+                            var combination = desc + cert;
+                            if(combination.includes(req.body.keyword)){
+                                temp.push(potentialJobsJSON[i]);
+                            }
+                        }
+                    }
+                    
+                    //returns json object after keyword search
+                    res.send(temp);
+                }
+                else{
+                    //returns json object after only distance search
+                    res.json(potentialJobsJSON);
+                }
             });
         };
     });
