@@ -2,9 +2,10 @@ const router = require("express").Router();
 const SQL = require("../db.js");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
-
+const jwt = require("jwt-simple");
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
+secret = "scoobydoobydoowhereareyou?";
 
 //Lists all users in the database
 router.get("/user/list", function(req, res){
@@ -13,6 +14,25 @@ router.get("/user/list", function(req, res){
             res.status(401).send('error');
         }else {
         res.status(200).send(result);
+        }
+    })
+});
+
+router.get("/user/current", function(req, res){
+    // Check if the X-Auth header is set
+    if (!req.headers["x-auth"]) {
+        res.status(401).json({error: "Missing X-Auth header"});
+    }
+
+    // X-Auth should contain the token
+    var token = req.headers["x-auth"];
+    var decoded = jwt.decode(token, secret);
+
+    SQL.query("SELECT * FROM User WHERE user_email = ?", decoded.user_email, function(err, result){
+        if (err){
+            res.status(401).send('error');
+        }else {
+            res.status(200).send(result);
         }
     })
 });

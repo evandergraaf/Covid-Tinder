@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt-nodejs");
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
+secret = "scoobydoobydoowhereareyou?";
 
 //Makes a new user
 router.post("/store/create", function(req, res){

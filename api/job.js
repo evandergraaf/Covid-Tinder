@@ -6,6 +6,7 @@ const jwt = require("jwt-simple");
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
+secret = "scoobydoobydoowhereareyou?";
 
 
 //calculates the distance between two coordinates
