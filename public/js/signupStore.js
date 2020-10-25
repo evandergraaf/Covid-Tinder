@@ -18,7 +18,6 @@ $(function() {
                             manager_name: $("#manager").val(),
                             phone: $("#tlf").val(),
                         }, function (data, status) {
-                            console.log(data);
                             $(".card").slideUp();
                             setTimeout(function(){
                             window.location.href = "/logInCompany.html";

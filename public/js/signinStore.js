@@ -12,7 +12,6 @@ $(function() {
                 setTimeout(function(){
                     window.location.href = "/homeCompanies.html";
                 }, 1000);
-//            window.location.href = "/homeCompanies.html";
         });
 
     });

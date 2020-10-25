@@ -1,41 +1,21 @@
 $(function(){
 
     function htmlBody() {
-        var DEBUG = false;
         var token = window.localStorage.getItem("token");
         var url = "api/job?u=" + token;
-        console.log(url);
 
 
         //get all job aviable in the data base
         $.get("api/job/list", (data) => {
-            console.log("data:" + data);
-
-            //for(var i=0; i< data.length; i++){
-            //        console.log(data[i].job_name);
-            //  }
-            
             
             var counter = 0;
             var html = "";
             var idList = [];
             for (var j = 0; j < data.length; j++) {
 
-                if (DEBUG) {
-                    console.log("job name: " + data[j].job_name);
-                    console.log("schedule hours: " + data[j].scheduled_hours);
-                    console.log("payment: " + data[j].pay);
-                    console.log("certification: " + data[j].certifications);
-                    console.log("starting date: " + data[j].start_date);
-                    console.log("endidng date: " + data[j].end_date);
-                    console.log("description: " + data[j].description);
-                    console.log("location: " + data[j].location);
-                }
-
                 // every 4 entries we have to create a new row or close the row
                 console.log("counter: " + counter);
                 if ((counter % 3 == 0)) {
-                    console.log("inside first if");
                     html += "<div class='row'>\n";
                 }
 
@@ -46,13 +26,11 @@ $(function(){
 
                 console.log(counter);
                 if ((counter != 0) && (counter % 3 == 2) || (counter >= data.length + 1)) {
-                    console.log("inside second if");
                     html += "</div>";
                 }
                 counter = counter + 1;
             }
-
-            console.log("html to add: " + html);
+            
             $("#jobCards").html(html);
             applyButton(idList);
             
