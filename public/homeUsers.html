@@ -1,12 +1,17 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script src="js/homeUsers.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="js/userAuth.js"></script>
         <script src="js/jobRetrieveHomeUsers.js"></script>
+        <script scr="js/orderByUserHome.js"></script>
     </head>  
 
 
@@ -16,29 +21,27 @@
               <a class="navbar-brand" href="#">User Home</a>
               <div id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-<!--
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Order By
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
+                    <li>
+                    <img src="https://www.thatsockcomic.com/wp-content/uploads/2020/03/Untitled-1-300x249.png" alt="Avatar" class="avatar">&nbsp;&nbsp;
                     </li>
--->
                     <li class="nav-item">
-                    <img src="https://www.thatsockcomic.com/wp-content/uploads/2020/03/Untitled-1-300x249.png" alt="Avatar" class="avatar">
-                    </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="logOut" href="logInUser.html">Log Out</a>
-                        </li>
-                    
-                    </ul>
-              </div>
-            </nav>
+                        <a class="nav-link" id="logOut" href="logInUser.html">Log Out</a>
+                    </li>&nbsp;&nbsp;
+                <li>
+                   <div class="dropdown p-2">
+                      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                        Order By
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Most Recent</a>
+                        <a class="dropdown-item" href="#">Distance</a>
+                        <a class="dropdown-item" href="#">Other</a>
+                      </div>
+                    </div>
+                </li> 
+                </ul>
+            </div>
+        </nav>
     </header>
 <!--Main Navigation-->
     
