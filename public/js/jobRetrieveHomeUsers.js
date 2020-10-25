@@ -57,6 +57,10 @@ $(function(){
             applyButton(idList);
             
      $("#searchBtn").click(() => {
+                     $(".card").slideUp();
+                setTimeout(function(){
+//                    window.location.href = "/homeCompanies.html";
+                }, 1000);
         var jobs = []
             var keyword = $("#keywords").val().toLowerCase();
             $.get("api/job/list",(data)=>{
@@ -148,6 +152,5 @@ $(function(){
                 $("#jobApply").html(html);
             }
         }); 
-    
 
 })
