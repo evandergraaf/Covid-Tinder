@@ -1,14 +1,13 @@
 const router = require("express").Router();
 const SQL = require("../db.js");
 const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt-nodejs");
 const jwt = require("jwt-simple");
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
-secret = "scoobydoobydoowhereareyou?";
-
-//Makes a new user
+//Makes a new job
 router.post("/job/create", function(req, res){
     console.log("Making a new job!");
 
@@ -20,42 +19,46 @@ router.post("/job/create", function(req, res){
     // X-Auth should contain the token
     var token = req.headers["x-auth"];
     var decoded = jwt.decode(token, secret);
+    console.log(decoded);
 
+    let qry = "SELECT * FROM Store WHERE store_email = ?"
+    SQL.query(qry, decoded.store_email, function(err, rows){
+        if (err) res.status(401).send('error');
 
-    var newJob = {
-        job_name: req.body.job_name,
-        scheduled_hours: req.body.scheduled_hours,
-        pay: req.body.pay,
-        certifications_needed: req.body.certifications,
-        start_date: req.body.start_date,
-        end_date: req.body.end_date,
-        description: req.body.description,
-        location: req.body.location,
-        store_email: decoded.store_email,
-    }
-    console.log(newJob);
-
-    SQL.query("INSERT INTO Job SET ?", newJob, function(err, result){
-        if (err){
-            console.log('Trouble inserting Job');
-            res.status(400).send(err);
+        else if (rows.length == 0){
+            res.status(401).json({error: "Invalid JWT"});
         }
+        
         else{
-            console.log('Job Saved.');
-            res.status(200).send('done');
+            var newJob = {
+                job_name: req.body.job_name,
+                scheduled_hours: req.body.scheduled_hours,
+                pay: req.body.pay,
+                certifications_needed: req.body.certifications,
+                start_date: req.body.start_date,
+                end_date: req.body.end_date,
+                description: req.body.description,
+                location: rows[0].location,
+                store_email: rows[0].store_email
+            }
+            console.log(newJob);
+    
+            SQL.query("INSERT INTO Job SET ?", newJob, function(err, result){
+                if (err){
+                    console.log('Trouble inserting Job');
+                    res.status(400).send(err);
+                }
+                else{
+                    console.log('Job Saved.');
+                    res.status(200).send('done');
+                }
+            })
         }
-    })
+    });
+        
 });
 
-router.get("/job/list", function(req, res){
-    SQL.query("SELECT * FROM Job", function(err, result){
-        if (err){
-            res.status(401).send('error');
-        }else {
-        res.status(200).send(result);
-        }
-    })
-});
+
 
 router.post("/job/apply", function(req, res){
     // Check if the X-Auth header is set
@@ -69,7 +72,7 @@ router.post("/job/apply", function(req, res){
 
     var jobApplicant = {
         job_id: req.body.job_id,
-        user_email: req.body.user_email,
+        user_email: decoded.user_email,
     }
 
     SQL.query("INSERT INTO Job_has_Applicant SET ?", jobApplicant, function(err, result){
@@ -94,6 +97,16 @@ router.post("/job/delete/applicant", function(req, res){
         }
     })
 
+});
+
+router.get("/job/list", function(req, res){
+    SQL.query("SELECT * FROM Job", function(err, result){
+        if (err){
+            res.status(401).send('error');
+        }else {
+        res.status(200).send(result);
+        }
+    })
 });
 
 
