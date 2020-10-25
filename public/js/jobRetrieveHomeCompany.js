@@ -52,7 +52,7 @@ $(function(){
     };
     
     function deleteBtn(){
-        $("#deleteButton").click(function(){
+        $(".btn-outline-warning").click(function(){
             console.log("button");
         });
     }
