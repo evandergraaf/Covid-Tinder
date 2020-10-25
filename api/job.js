@@ -32,19 +32,61 @@ router.post("/job/create", function(req, res){
             res.status(200).send('done');
         }
     })
-})
+});
 
 router.get("/job/list", function(req, res){
-    console.log('job List');
     SQL.query("SELECT * FROM Job", function(err, result){
-        console.log(result);
         if (err){
             res.status(401).send('error');
         }else {
         res.status(200).send(result);
         }
     })
+<<<<<<< HEAD
 })
+=======
+
+});
+
+router.post("/job/apply", function(req, res){
+    // Check if the X-Auth header is set
+    if (!req.headers["x-auth"]) {
+        return res.status(401).json({error: "Missing X-Auth header"});
+    }
+
+    // X-Auth should contain the token
+    var token = req.headers["x-auth"];
+    var decoded = jwt.decode(token, secret);
+
+    var jobApplicant = {
+        job_id: req.body.job_id,
+        user_email: req.body.user_email,
+    }
+
+    SQL.query("INSERT INTO Job_has_Applicant SET ?", jobApplicant, function(err, result){
+        console.log(result);
+        if (err){
+            res.status(401).send('error');
+        }else {
+            res.status(200).send(result);
+        }
+    })
+
+});
+
+router.post("/job/delete/applicant", function(req, res){
+
+    SQL.query(`DELETE * FROM Job_has_Applicant WHERE user_email = ${req.body.user_email}`, function(err, result){
+        console.log(result);
+        if (err){
+            res.status(401).send('error');
+        }else {
+            res.status(200).send(result);
+        }
+    })
+
+});
+>>>>>>> 85ae872d4655a02f6d37fa181b201b5d2288e1ba
 
 
 
