@@ -1,14 +1,26 @@
 const router = require("express").Router();
 const SQL = require("../db.js");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt-nodejs");
+const jwt = require("jwt-simple");
 
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
+secret = "scoobydoobydoowhereareyou?";
+
 //Makes a new user
 router.post("/job/create", function(req, res){
     console.log("Making a new job!");
+
+    // Check if the X-Auth header is set
+    if (!req.headers["x-auth"]) {
+        return res.status(401).json({error: "Missing X-Auth header"});
+    }
+
+    // X-Auth should contain the token
+    var token = req.headers["x-auth"];
+    var decoded = jwt.decode(token, secret);
+
 
     var newJob = {
         job_name: req.body.job_name,
@@ -19,6 +31,7 @@ router.post("/job/create", function(req, res){
         end_date: req.body.end_date,
         description: req.body.description,
         location: req.body.location,
+        store_email: decoded.store_email,
     }
     console.log(newJob);
 
