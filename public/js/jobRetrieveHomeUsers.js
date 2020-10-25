@@ -14,7 +14,6 @@ $(function(){
             for (var j = 0; j < data.length; j++) {
 
                 // every 4 entries we have to create a new row or close the row
-                console.log("counter: " + counter);
                 if ((counter % 3 == 0)) {
                     html += "<div class='row'>\n";
                 }
@@ -24,7 +23,6 @@ $(function(){
                 // create the card for the job
                 html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + data[j].job_name + "</h5>\n <p class='card-text'>" + data[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + data[j].start_date + "-" + data[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + data[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + data[j].address + "</li>\n <li class='list-group-item'><b>Salary: </b>" + data[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + data[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID + " " + ">Apply</button>\n  </li>\n </ul>\n </div>\n </div>\n ";
 
-                console.log(counter);
                 if ((counter != 0) && (counter % 3 == 2) || (counter >= data.length + 1)) {
                     html += "</div>";
                 }
@@ -42,7 +40,6 @@ $(function(){
         var jobs = []
             var keyword = $("#keywords").val().toLowerCase();
         var radius = $("#demo").html();
-        console.log(radius);
             $.ajax({
                 url: "api/job/searchInRadius",
                 type: "POST",
@@ -70,11 +67,7 @@ $(function(){
                             }
                         }
                     }
-                    console.log(jobs.length);
-                    console.log(jobs);
 
-                    console.log("jobs: " , jobs.length);
-                    console.log(jobs);
 
                     var counter = 0;
                     var html = "";
@@ -94,7 +87,6 @@ $(function(){
                         counter = counter + 1;
                     }
 
-                    console.log("html to add: " + html);
                     $("#jobCards").html(html);
 
                     applyButton(idList);
@@ -109,7 +101,6 @@ $(function(){
     function applyButton(idList){
         for (let i = 0; i < idList.length; i++){
             $("#" + idList[i]).click(function(){
-                console.log("button", idList[i]);
                 $.ajax({
                     url: "api/job/apply",
                     type: "POST",
@@ -129,7 +120,6 @@ $(function(){
             type: "GET",
             headers: {"x-auth": window.localStorage.getItem("token")},
             success: function(data) {
-                console.log(data);
                 var html="<div class='row'>";
                 
                 for (var j = 0; j < data.length; j++) {

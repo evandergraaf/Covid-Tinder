@@ -39,7 +39,6 @@ router.get("/user/current", function(req, res){
 
 //Makes a new user
 router.post("/user/create", function(req, res){
-    console.log("Making a new user!");
 
     //why select these values again?
     let qry = "SELECT user_email, password, full_name FROM User WHERE user_email = ?";
@@ -67,11 +66,9 @@ router.post("/user/create", function(req, res){
             
                 SQL.query("INSERT INTO User SET ?", newUser, function(err, result){
                     if (err){
-                        console.log("Trouble inserting user.");
                         res.status(400).send(err);
                     }
                     else{
-                        console.log("User saved.");
                         res.status(200).send('done');
                     }
                 } )

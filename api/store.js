@@ -10,7 +10,6 @@ secret = "scoobydoobydoowhereareyou?";
 
 //Makes a new user
 router.post("/store/create", function(req, res){
-    console.log("Making a new store!");
 
     //why select these values again?
     let qry = "SELECT store_id FROM Store WHERE store_email = ?";
@@ -39,11 +38,9 @@ router.post("/store/create", function(req, res){
             
                 SQL.query("INSERT INTO Store SET ?", newStore, function(err, result){
                     if (err){
-                        console.log("Trouble inserting store.");
                         res.status(400).send(err);
                     }
                     else{
-                        console.log("Store saved.");
                         res.status(200).send('done');
                     }
                 } )

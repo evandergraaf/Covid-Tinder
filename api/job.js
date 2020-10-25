@@ -28,13 +28,11 @@ function calculateDistance(userLat, userLon, jobLat, jobLon){
 };
 
 router.get("/job/distanceTest", function(req,res){
-    console.log(calculateDistance(37.183054,-3.6021928,37.2166779,-93.2920373));
     res.status(200);
 });
 
 //Makes a new job
 router.post("/job/create", function(req, res){
-    console.log("Making a new job!");
 
     // Check if the X-Auth header is set
     if (!req.headers["x-auth"]) {
@@ -44,7 +42,6 @@ router.post("/job/create", function(req, res){
     // X-Auth should contain the token
     var token = req.headers["x-auth"];
     var decoded = jwt.decode(token, secret);
-    console.log(decoded);
 
     let qry = "SELECT * FROM Store WHERE store_email = ?"
     SQL.query(qry, decoded.store_email, function(err, rows){
@@ -67,15 +64,12 @@ router.post("/job/create", function(req, res){
                 address: rows[0].address,
                 store_email: rows[0].store_email
             }
-            console.log(newJob);
-    
+
             SQL.query("INSERT INTO Job SET ?", newJob, function(err, result){
                 if (err){
-                    console.log('Trouble inserting Job');
                     res.status(400).send(err);
                 }
                 else{
-                    console.log('Job Saved.');
                     res.status(200).send('done');
                 }
             })
@@ -139,8 +133,6 @@ router.post("/job/searchInRadius", function(req, res){
                         var jobLat = splitJobCoordinates[0];
                         var jobLon = splitJobCoordinates[1];
                         distance = calculateDistance(userLat,userLon,jobLat,jobLon);
-                        console.log("Distance between user and job:" + distance);
-                        console.log('user radius', userRadius);
                         if (distance <= userRadius){
                             rows[i]['distance'] = Math.round(distance);
                             potentialJobs += JSON.stringify(rows[i]) +",";
@@ -151,7 +143,6 @@ router.post("/job/searchInRadius", function(req, res){
                     potentialJobs = potentialJobs.slice(0,-1);
                     potentialJobs += "]";
                     //TURNS INTO JSON OBJECT
-                    console.log(potentialJobs);
                     var potentialJobsJSON = JSON.parse(potentialJobs);
                     
                 }
@@ -208,10 +199,8 @@ router.post("/job/apply", function(req, res){
         user_email: decoded.user_email,
     }
 
-     console.log(jobApplicant);
 
     SQL.query("INSERT INTO Job_has_Applicant SET ?", jobApplicant, function(err, result){
-        console.log(result);
         if (err){
             res.status(401).send('error');
         }else {
@@ -236,7 +225,6 @@ router.get("/job/user/apply/list", function(req, res){
             res.status(401).send('error');
         }else {
                 SQL.query('SELECT * FROM Job LEFT JOIN Job_has_Applicant ON Job.job_id = Job_has_Applicant.job_id WHERE Job_has_Applicant.user_email =  ?', decoded.user_email, function(err, result){
-                   console.log(result);
                     res.status(200).send(result);
 
                 });
@@ -248,7 +236,6 @@ router.get("/job/user/apply/list", function(req, res){
 router.post("/job/delete/applicant", function(req, res){
 
     SQL.query(`DELETE * FROM Job_has_Applicant WHERE user_email = ${req.body.user_email}`, function(err, result){
-        console.log(result);
         if (err){
             res.status(401).send('error');
         }else {
@@ -261,7 +248,6 @@ router.post("/job/delete/applicant", function(req, res){
 router.post("/job/delete", function(req, res){
 
     SQL.query(`DELETE FROM Job WHERE job_id = ?`, req.body.job_id, function(err, result){
-        console.log(result);
         if (err){
             res.status(401).send('error');
         }else {
