@@ -24,12 +24,26 @@ router.post("/user/create", function(req, res){
         else{
             //Create a hash for the submitted password
             bcrypt.hash(req.body.password, null, null, function(err, hash){
-
+                console.log("bcrypt is a butt!");
+                var location;
                 var newUser = {
                     user_email: req.body.user_email,
                     password: hash,
                     full_name: req.body.full_name,
-                    set_location: 0,
+                    set_location: function(){
+                        console.log("Bloefjwoeifjwef!");
+                        $.get("https://maps.googleapis.com/maps/api/geocode/json?address="+ req.body.set_location +"&key=AIzaSyAWd49rKgMR0RHaL9a38_tyQEEhXudKgrc",
+                        function(res, err){
+                            if (err) console.log(err);
+                            //console.log(res);
+                            var latitude = res.results[0]["geometry"].location.lat;
+                            var longitude = res.results[0]["geometry"].location.lng;
+                            console.log(latitude);
+                            console.log(longitude);
+                            location = '{"latitude":'+latitude+', "longitude":'+longitude+'}'; 
+                        });
+                    return location;
+                    },
                     phone: req.body.phone,
                     age: req.body.age
                 };
