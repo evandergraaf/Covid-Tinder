@@ -7,13 +7,37 @@ const jwt = require("jwt-simple");
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 
+
+//calculates the distance between two coordinates
+function calculateDistance(userLat, userLon, jobLat, jobLon){
+    var R = 6371;
+    var kmtomiles = 0.621371192;
+
+    var x1 = userLat - jobLat;
+    var dLat = x1/180*Math.PI;
+    var x2 = userLon - jobLon;
+    var dLon = x2/180*Math.PI;
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+            Math.cos(jobLat/180*Math.PI) * Math.cos(userLat/180*Math.PI) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2);  
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var dist = R * c;
+    var dist = dist*kmtomiles;
+    return dist;
+};
+
+router.get("/job/distanceTest", function(req,res){
+    console.log(calculateDistance(37.183054,-3.6021928,37.2166779,-93.2920373));
+    res.status(200);
+});
+
 //Makes a new job
 router.post("/job/create", function(req, res){
     console.log("Making a new job!");
 
     // Check if the X-Auth header is set
     if (!req.headers["x-auth"]) {
-        return res.status(401).json({error: "Missing X-Auth header"});
+        res.status(401).json({error: "Missing X-Auth header"});
     }
 
     // X-Auth should contain the token
@@ -56,6 +80,66 @@ router.post("/job/create", function(req, res){
         }
     });
         
+});
+
+
+//User searches for jobs in their preferred radius
+router.get("/job/searchInRadius", function(req, res){
+    // Check if the X-Auth header is set
+    if (!req.headers["x-auth"]) {
+        return res.status(401).json({error: "Missing X-Auth header"});
+    }
+
+    // X-Auth should contain the token
+    var token = req.headers["x-auth"];
+    var decoded = jwt.decode(token, secret);
+
+    let qry = "SELECT * FROM User WHERE user_email = ?"
+
+    SQL.query(qry, decoded.user_email, function(err, rows){
+        if (err) res.status(401).send('error');
+
+        else if (rows.length == 0){
+            res.status(401).send('INVALID JWT');
+        }
+        else{
+            //Gets the coordinates of the User
+            var userCoordinates = rows[0].set_location;
+            var splitUserCoordinates = userCoordinates.split(",");
+            var userLat = splitUserCoordinates[0];
+            var userLon = splitUserCoordinates[1];
+
+            //FINDS ALL JOBS
+            let qry = "SELECT * FROM Job";
+            SQL.query(qry, function(err, rows){
+                if (err) res.status(401).send('error');
+        
+                else{
+                    var potentialJobs = "[";
+                    for (i = 0; i < rows.length; i++) {
+                        
+                        //Gets the coordinates of the Job
+                        var jobCoordinates = rows[i].location;
+                        var splitJobCoordinates = jobCoordinates.split(",");
+                        var jobLat = splitJobCoordinates[0];
+                        var jobLon = splitJobCoordinates[1];
+                        distance = calculateDistance(userLat,userLon,jobLat,jobLon);
+                        console.log("Distance between user and job:" + distance);
+                        if (distance <= 1000){
+                            potentialJobs += JSON.stringify(rows[i]) +",";
+                        }
+                        
+                    }
+                    //Gets rid of the extra comma and ends the string
+                    potentialJobs = potentialJobs.slice(0,-1);
+                    potentialJobs += "]"
+                }
+                console.log(potentialJobs);
+                
+                res.json(JSON.parse(potentialJobs));
+            });
+        };
+    });
 });
 
 
