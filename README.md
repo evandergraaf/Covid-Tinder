@@ -1,6 +1,6 @@
 # SUB-ME
 # Ean Vandergraaf, Laura Pareja, Seth Workman, and Carter William's solution to the KC Fed Code-A-Thon 
-# Youtube link: aoisfjaosijfoaisjfoiasjfd.com
+# Youtube link: https://youtu.be/uYeYnlBxHTM
 
   As the coronavirus continues to spread across the country, businesses have been hurting. This is particularly evident in industries where employees cannot do their job from home, such as workers in food-service, outdoor work, and various other jobs. Unfortunately, whenever these employees catch the virus, or have been in contact with it, they must be quarantined for two weeks, and businesses are now faced with the problem of quickly finding a replacement for a time-span of only two weeks. In order to ease the stress of this process, we have come up with this solution.
   
