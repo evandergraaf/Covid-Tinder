@@ -5,6 +5,6 @@
   
   SUB-ME solves the problem of sick or quarantined employees by offering a platform for businesses to post brief job listings as soon as they need someone to fill in while their employee is out. Additionally, SUB-ME offers a platform for people who have recently been layed off due to the pandemic and need some type of income while searching for a steady job. These job listings will be brief and the jobs themselves will be temporary. 
   
-Ean, Laura, Seth, Carter's solution to the KC Fed Code-A-Thon 
+Ean Vandergraaf, Laura Pareja, Seth Workman, and Carter William's solution to the KC Fed Code-A-Thon 
 
 
