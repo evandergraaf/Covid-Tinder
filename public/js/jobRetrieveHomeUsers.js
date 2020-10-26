@@ -78,15 +78,16 @@ $(function(){
 
                     var counter = 0;
                     var html = "";
+                    var idList2 = [];
                     for (var j=0; j<jobs.length; j++){
                         if((counter%3 == 0)){
                             html += "<div class='row'>\n";
                         }
                         // create the card for the job
-                        var btnID = "apply-" + jobs[j].job_id;
-                        idList.push(btnID);
+                        var btnID2 = "apply_" + jobs[j].job_id;
+                        idList2.push(btnID2);
                         // create the card for the job
-                        html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + jobs[j].job_name + "</h5>\n <p class='card-text'>" + jobs[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + jobs[j].start_date + "-" + jobs[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + jobs[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + jobs[j].address + "</li>\n <li class='list-group-item'><b>Salary: </b>" + jobs[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + jobs[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID + " " + ">Apply</button>\n  </li>\n </ul>\n </div>\n </div>\n ";
+                        html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + jobs[j].job_name + "</h5>\n <p class='card-text'>" + jobs[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + jobs[j].start_date + "-" + jobs[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + jobs[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + jobs[j].address + "</li>\n <li class='list-group-item'><b>Salary: </b>" + jobs[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + jobs[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID2 + " " + ">Apply</button>\n  </li>\n </ul>\n </div>\n </div>\n ";
 
                         if((counter != 0) && (counter%3 == 2) || (counter >= data.length+1)){
                             html += "</div>";
@@ -97,6 +98,7 @@ $(function(){
                     $("#jobCards").html(html);
 
                     applyButton(idList);
+                    applyButton2(idList2);
                 }
             });
         }, 1000);
@@ -108,6 +110,23 @@ $(function(){
     function applyButton(idList){
         for (let i = 0; i < idList.length; i++){
             let temp = idList[i].split('-');
+            $("#" + idList[i]).click(function(){
+                $.ajax({
+                    url: "api/job/apply",
+                    type: "POST",
+                    data: {job_id: temp[1]},
+                    headers: {"x-auth": window.localStorage.getItem("token")},
+                    success: function(data) {
+                        window.location.reload();
+                    }
+                });
+            });
+        }
+    }
+
+    function applyButton2(idList){
+        for (let i = 0; i < idList.length; i++){
+            let temp = idList[i].split('_');
             $("#" + idList[i]).click(function(){
                 $.ajax({
                     url: "api/job/apply",
