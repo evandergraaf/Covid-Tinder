@@ -121,7 +121,7 @@ router.post("/job/searchInRadius", function(req, res){
             //FINDS ALL JOBS
             let qry = "SELECT * FROM Job";
             SQL.query(qry, function(err, rows){
-                if (err) res.status(401).send('error');
+                if (err){ res.status(401).send('error')}
         
                 else{
                     var potentialJobs = "[";
@@ -133,6 +133,7 @@ router.post("/job/searchInRadius", function(req, res){
                         var jobLat = splitJobCoordinates[0];
                         var jobLon = splitJobCoordinates[1];
                         distance = calculateDistance(userLat,userLon,jobLat,jobLon);
+                        console.log(distance);
                         if (distance <= userRadius){
                             rows[i]['distance'] = Math.round(distance);
                             potentialJobs += JSON.stringify(rows[i]) +",";
@@ -142,6 +143,8 @@ router.post("/job/searchInRadius", function(req, res){
                     //Gets rid of the extra comma and ends the string
                     potentialJobs = potentialJobs.slice(0,-1);
                     potentialJobs += "]";
+
+                    console.log(potentialJobs);
                     //TURNS INTO JSON OBJECT
                     var potentialJobsJSON = JSON.parse(potentialJobs);
                     

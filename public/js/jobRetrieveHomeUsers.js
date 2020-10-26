@@ -25,7 +25,7 @@ $(function(){
                     html += "<div class='row'>\n";
                 }
 
-                var btnID = "apply" + data[j].job_id;
+                var btnID = "apply-" + data[j].job_id;
                 idList.push(btnID);
                 // create the card for the job
                 html += "<div class='col-sm'>\n <div class='card' style='width: 30rem;'>\n <div class='card-body'>\n <h5 class='card-title'>" + data[j].job_name + "</h5>\n <p class='card-text'>" + data[j].description + "</p>\n </div>\n <ul class='list-group list-group-flush'>\n <li class='list-group-item'><b>Duration: </b>" + data[j].start_date + "-" + data[j].end_date + "</li>\n <li class='list-group-item'><b>Schedule: </b>" + data[j].scheduled_hours + "</li>\n <li class='list-group-item'><b>Location: </b>" + data[j].address + "</li>\n <li class='list-group-item'><b>Salary: </b>" + data[j].pay + "$/h</li>\n <li class='list-group-item'><b>Certifications needed: </b>" + data[j].certifications_needed + "</li>\n  <li class='list-group-item'>\n <button type='button' class='btn btn-outline-warning' id=" + btnID + " " + ">Apply</button>\n  </li>\n </ul>\n </div>\n </div>\n ";
@@ -104,11 +104,12 @@ $(function(){
 
     function applyButton(idList){
         for (let i = 0; i < idList.length; i++){
+            let temp = idList[i].split('-');
             $("#" + idList[i]).click(function(){
                 $.ajax({
                     url: "api/job/apply",
                     type: "POST",
-                    data: {job_id: idList[i].slice(-1)},
+                    data: {job_id: temp[1]},
                     headers: {"x-auth": window.localStorage.getItem("token")},
                     success: function(data) {
                         window.location.reload();
